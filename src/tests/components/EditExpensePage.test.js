@@ -4,12 +4,12 @@ import { shallow } from "enzyme";
 import expenses from "../fixtures/expenses"
 
 
-let editExpense, removeExpense, history, wrapper, match
+let startEditExpense, startRemoveExpense, history, wrapper, match
 
 
 beforeAll(() => {
-    editExpense = jest.fn()
-    removeExpense = jest.fn()
+    startEditExpense = jest.fn()
+    startRemoveExpense = jest.fn()
     history = {
         push: jest.fn()
     }
@@ -20,8 +20,8 @@ beforeAll(() => {
         }
     }
     wrapper = shallow(<EditExpensePage
-        editExpense={editExpense}
-        removeExpense={removeExpense}
+        startEditExpense={startEditExpense}
+        startRemoveExpense={startRemoveExpense}
         history={history}
         expense={expenses[0]}
     />)
@@ -35,7 +35,7 @@ test("should change the expense on submitting", () => {
 
     wrapper.find("ExpenseForm").prop("onSubmit")(expenses[0])
 
-    expect(editExpense).toHaveBeenLastCalledWith(expenses[0].id, expenses[0])
+    expect(startEditExpense).toHaveBeenLastCalledWith(expenses[0].id, expenses[0])
 
     expect(history.push).toHaveBeenLastCalledWith("/")
 })
@@ -45,7 +45,7 @@ test("should remove the expense on clicking remove button", () => {
 
     wrapper.find("button").prop("onClick")()
 
-    expect(removeExpense).toHaveBeenLastCalledWith(id)
+    expect(startRemoveExpense).toHaveBeenLastCalledWith(id)
     expect(history.push).toHaveBeenLastCalledWith("/")
 })
 
