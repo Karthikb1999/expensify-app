@@ -8,6 +8,7 @@ exports[`should render expenseList when expenses is provided 1`] = `
     description="car"
     id="1"
     key="1"
+    note=""
   />
   <ExpenseListItem
     amount={10000}
@@ -15,6 +16,7 @@ exports[`should render expenseList when expenses is provided 1`] = `
     description="rent"
     id="2"
     key="2"
+    note=""
   />
   <ExpenseListItem
     amount={15000}
@@ -22,6 +24,7 @@ exports[`should render expenseList when expenses is provided 1`] = `
     description="bike"
     id="3"
     key="3"
+    note=""
   />
 </div>
 `;
