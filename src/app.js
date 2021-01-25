@@ -1,5 +1,5 @@
 import React from "react"
-import AppRouter from "./routers/AppRouter"
+import AppRouter, { history } from "./routers/AppRouter"
 import ReactDOM from "react-dom"
 import { Provider } from "react-redux";
 import configureStore from "./store/configureStore";
@@ -8,6 +8,17 @@ import "./styles/styles.scss"
 import 'react-dates/lib/css/_datepicker.css'
 import './firebase/firebase'
 import { startSetExpenses } from "./actions/expenses"
+import { firebase } from "./firebase/firebase";
+import { login, logout } from "./actions/auth";
+
+let hasRendered = false
+
+const renderApp = () => {
+    if (!hasRendered) {
+        ReactDOM.render(jsx, rootEl)
+        hasRendered = true
+    }
+}
 
 
 const store = configureStore()
@@ -24,8 +35,22 @@ const rootEl = document.getElementById("app")
 
 ReactDOM.render(<p>Loading...</p>, rootEl)
 
-store.dispatch(startSetExpenses()).then(() => {
-    ReactDOM.render(jsx, rootEl)
+
+
+firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+        store.dispatch(login(user.uid))
+        store.dispatch(startSetExpenses()).then(() => {
+            renderApp()
+            if (history.location.pathname === '/') {
+                history.push('/dashboard')
+            }
+        })
+    } else {
+        store.dispatch(logout())
+        renderApp()
+        history.push("/")
+    }
 })
 
 
