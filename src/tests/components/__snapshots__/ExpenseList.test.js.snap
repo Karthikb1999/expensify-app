@@ -1,38 +1,92 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render expenseList when expenses is provided 1`] = `
-<div>
-  <ExpenseListItem
-    amount={20000}
-    createdAt={0}
-    description="car"
-    id="1"
-    key="1"
-    note=""
-  />
-  <ExpenseListItem
-    amount={10000}
-    createdAt={-345600000}
-    description="rent"
-    id="2"
-    key="2"
-    note=""
-  />
-  <ExpenseListItem
-    amount={15000}
-    createdAt={345600000}
-    description="bike"
-    id="3"
-    key="3"
-    note=""
-  />
+<div
+  className="container"
+>
+  <div
+    className="list-header"
+  >
+    <div
+      className="show-to-desktop"
+    >
+      Expense
+    </div>
+    <div
+      className="show-to-desktop"
+    >
+      Amount
+    </div>
+    <div
+      className="show-to-mobile"
+    >
+      Expenses
+    </div>
+  </div>
+  <div
+    className="list-body"
+  >
+    <ExpenseListItem
+      amount={20000}
+      createdAt={0}
+      description="car"
+      id="1"
+      key="1"
+      note=""
+    />
+    <ExpenseListItem
+      amount={10000}
+      createdAt={-345600000}
+      description="rent"
+      id="2"
+      key="2"
+      note=""
+    />
+    <ExpenseListItem
+      amount={15000}
+      createdAt={345600000}
+      description="bike"
+      id="3"
+      key="3"
+      note=""
+    />
+  </div>
 </div>
 `;
 
 exports[`should render expenseList with empty message 1`] = `
-<div>
-  <p>
-    No expenses
-  </p>
+<div
+  className="container"
+>
+  <div
+    className="list-header"
+  >
+    <div
+      className="show-to-desktop"
+    >
+      Expense
+    </div>
+    <div
+      className="show-to-desktop"
+    >
+      Amount
+    </div>
+    <div
+      className="show-to-mobile"
+    >
+      Expenses
+    </div>
+  </div>
+  <div
+    className="list-body"
+  >
+    <div
+      className="list-item list-item--message"
+    >
+      <p>
+        No expenses
+      </p>
+    </div>
+  </div>
 </div>
 `;
